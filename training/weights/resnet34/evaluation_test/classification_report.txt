@@ -1,0 +1,10 @@
+                precision    recall  f1-score   support
+
+damaged_shield     0.9773    1.0000    0.9885        43
+        normal     0.9767    0.9130    0.9438        46
+        rusted     0.9730    0.9908    0.9818       109
+surface_damage     0.9730    0.9730    0.9730        37
+
+      accuracy                         0.9745       235
+     macro avg     0.9750    0.9692    0.9718       235
+  weighted avg     0.9745    0.9745    0.9742       235

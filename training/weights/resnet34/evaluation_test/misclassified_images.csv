@@ -1,0 +1,7 @@
+﻿image_path,true_label,predicted_label,confidence_percent
+C:\work\code\python\NCKH_Phan_loai_vong_bi\data\resnet_dataset\test\normal\original_000489.jpg,normal,rusted,37.43
+C:\work\code\python\NCKH_Phan_loai_vong_bi\data\resnet_dataset\test\normal\original_000506.jpg,normal,rusted,65.75
+C:\work\code\python\NCKH_Phan_loai_vong_bi\data\resnet_dataset\test\normal\original_000512.jpg,normal,rusted,90.78
+C:\work\code\python\NCKH_Phan_loai_vong_bi\data\resnet_dataset\test\normal\original_000531.jpg,normal,surface_damage,56.71
+C:\work\code\python\NCKH_Phan_loai_vong_bi\data\resnet_dataset\test\rusted\original_001631.jpg,rusted,normal,56.61
+C:\work\code\python\NCKH_Phan_loai_vong_bi\data\resnet_dataset\test\surface_damage\original_002113.jpg,surface_damage,damaged_shield,97.4

@@ -1,0 +1,12 @@
+
+{
+  "detection": {
+    "0": "bearing"
+  },
+  "classification": {
+    "0": "damaged_shield",
+    "1": "normal",
+    "2": "rusted",
+    "3": "surface_damage"
+  }
+}

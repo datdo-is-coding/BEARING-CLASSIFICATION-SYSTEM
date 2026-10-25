@@ -1,0 +1,297 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C-SHARP\\DashBoardBearing\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\formsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:formsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\formsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:formsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|D:\\C-SHARP\\DashBoardBearing\\formrobot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:formrobot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\formrobot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:formrobot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\formsetting.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:formsetting.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\serialmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:serialmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA686477-1494-47E1-8A2A-B2AD42DCA358}|..\\RobotView\\RobotView.csproj|d:\\c-sharp\\robotview\\robotview.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA686477-1494-47E1-8A2A-B2AD42DCA358}|..\\RobotView\\RobotView.csproj|d:\\c-sharp\\robotview\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA686477-1494-47E1-8A2A-B2AD42DCA358}|..\\RobotView\\RobotView.csproj|d:\\c-sharp\\robotview\\robot4dof.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|d:\\c-sharp\\dashboardbearing\\roundedpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:roundedpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|D:\\C-SHARP\\DashBoardBearing\\formlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6BC40E20-1984-4244-A7C9-88BFDC859463}|DashBoardBearing.csproj|solutionrelative:formlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CameraManager.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\CameraManager.cs",
+              "RelativeDocumentMoniker": "CameraManager.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\CameraManager.cs",
+              "RelativeToolTip": "CameraManager.cs",
+              "ViewState": "AgIAAGEDAAAAAAAAAAAQwHUDAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-25T07:17:00.419Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormSetting.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\FormSetting.cs",
+              "RelativeDocumentMoniker": "FormSetting.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\FormSetting.cs",
+              "RelativeToolTip": "FormSetting.cs",
+              "ViewState": "AgIAAAEBAAAAAAAAAAAUwAkBAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T06:47:08.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAcwA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-16T00:58:17.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormHome.cs [Design]",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\FormHome.cs",
+              "RelativeDocumentMoniker": "FormHome.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\FormHome.cs [Design]*",
+              "RelativeToolTip": "FormHome.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-25T09:14:26.593Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormHome.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\FormHome.cs",
+              "RelativeDocumentMoniker": "FormHome.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\FormHome.cs*",
+              "RelativeToolTip": "FormHome.cs*",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAewJ0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T06:02:29.206Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-25T14:21:11.2Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FormRobot.cs [Design]",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\FormRobot.cs",
+              "RelativeDocumentMoniker": "FormRobot.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\FormRobot.cs [Design]",
+              "RelativeToolTip": "FormRobot.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T00:12:48.4Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FormSetting.cs [Design]",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\FormSetting.cs",
+              "RelativeDocumentMoniker": "FormSetting.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\FormSetting.cs [Design]",
+              "RelativeToolTip": "FormSetting.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-25T10:12:22.529Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FormRobot.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\FormRobot.cs",
+              "RelativeDocumentMoniker": "FormRobot.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\FormRobot.cs",
+              "RelativeToolTip": "FormRobot.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAB0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-25T11:44:17.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FormSetting.Designer.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\FormSetting.Designer.cs",
+              "RelativeDocumentMoniker": "FormSetting.Designer.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\FormSetting.Designer.cs",
+              "RelativeToolTip": "FormSetting.Designer.cs",
+              "ViewState": "AgIAALoAAAAAAAAAAAAIwMUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T01:10:06.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAQwC0AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T09:04:06.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SerialManager.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\SerialManager.cs",
+              "RelativeDocumentMoniker": "SerialManager.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\SerialManager.cs",
+              "RelativeToolTip": "SerialManager.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAADwvwkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-25T08:57:50.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RobotView.csproj",
+              "DocumentMoniker": "D:\\C-SHARP\\RobotView\\RobotView.csproj",
+              "RelativeDocumentMoniker": "..\\RobotView\\RobotView.csproj",
+              "ToolTip": "D:\\C-SHARP\\RobotView\\RobotView.csproj",
+              "RelativeToolTip": "..\\RobotView\\RobotView.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-18T02:06:23.341Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\RobotView\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "..\\RobotView\\MainViewModel.cs",
+              "ToolTip": "D:\\C-SHARP\\RobotView\\MainViewModel.cs",
+              "RelativeToolTip": "..\\RobotView\\MainViewModel.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA2wH0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-16T00:59:01.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Robot4DOF.xaml.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\RobotView\\Robot4DOF.xaml.cs",
+              "RelativeDocumentMoniker": "..\\RobotView\\Robot4DOF.xaml.cs",
+              "ToolTip": "D:\\C-SHARP\\RobotView\\Robot4DOF.xaml.cs",
+              "RelativeToolTip": "..\\RobotView\\Robot4DOF.xaml.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAYwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-18T02:46:29.715Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RoundedPanel.cs",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\RoundedPanel.cs",
+              "RelativeDocumentMoniker": "RoundedPanel.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\RoundedPanel.cs",
+              "RelativeToolTip": "RoundedPanel.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAADgv2IAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T01:00:16.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "FormLog.cs [Design]",
+              "DocumentMoniker": "D:\\C-SHARP\\DashBoardBearing\\FormLog.cs",
+              "RelativeDocumentMoniker": "FormLog.cs",
+              "ToolTip": "D:\\C-SHARP\\DashBoardBearing\\FormLog.cs [Design]",
+              "RelativeToolTip": "FormLog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T00:12:33.075Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

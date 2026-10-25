@@ -1,0 +1,10 @@
+# Cài PyTorch riêng theo cấu hình CPU/CUDA tại:
+# https://pytorch.org/get-started/locally/
+ultralytics
+opencv-python
+numpy
+Pillow
+PyYAML
+scikit-learn
+matplotlib
+pytest

@@ -1,0 +1,23 @@
+# Giá trị ban đầu; cần tinh chỉnh dựa trên tập validation.
+paths:
+  yolo_model: models/yolo_best.pt
+  classifier_model: models/resnet34_best.pth
+  class_mapping: models/class_mapping.json
+
+detection:
+  class_id: 0
+  confidence_threshold: 0.50
+  iou_threshold: 0.45
+  image_size: 640
+
+classification:
+  enabled: false
+  image_size: 224
+  confidence_threshold: 0.70
+
+pipeline:
+  crop_margin_ratio: 0.05
+
+output:
+  include_bbox: true
+  include_center: true
