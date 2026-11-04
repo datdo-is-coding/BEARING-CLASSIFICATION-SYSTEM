@@ -18,6 +18,34 @@ using WinFormTimer = System.Windows.Forms.Timer;
 
 namespace DashBoardBearing
 {
+    /// <summary>
+    /// Thông tin thiết bị Camera thu thập từ DirectShow (không chiếm dụng phần cứng)
+    /// </summary>
+    public class CameraDeviceInfo
+    {
+        public int Index { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string MonikerString { get; set; } = string.Empty;
+
+        public override string ToString() => $"{Name} (Index {Index})";
+    }
+
+    [ComImport, Guid("29840822-5B84-11D0-BD3B-00A0C911CE86"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    internal interface ICreateDevEnum
+    {
+        [PreserveSig]
+        int CreateClassEnumerator([In] ref Guid pType, [Out] out System.Runtime.InteropServices.ComTypes.IEnumMoniker ppEnumMoniker, [In] int dwFlags);
+    }
+
+    [ComImport, Guid("55272A00-42CB-11CE-8135-00AA004BB851"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    internal interface IPropertyBag
+    {
+        [PreserveSig]
+        int Read([In, MarshalAs(UnmanagedType.LPWStr)] string pszPropName, [In, Out, MarshalAs(UnmanagedType.Struct)] ref object pVar, [In] IntPtr pErrorLog);
+        [PreserveSig]
+        int Write([In, MarshalAs(UnmanagedType.LPWStr)] string pszPropName, [In, MarshalAs(UnmanagedType.Struct)] ref object pVar);
+    }
+
     // Kết quả của từng vòng bi
     public class BearingResult
     {
@@ -113,15 +141,99 @@ namespace DashBoardBearing
         private int connecting;                      // chặn gọi StartIpAsync chồng nhau
 
         /// <summary>
-        /// Dò các index camera dùng được (0..maxIndex-1).
-        /// Camera đang bị CameraManager chiếm sẽ không xuất hiện trong list,
-        /// nên form cần tự thêm CurrentCameraIndex nếu IsRunning.
+        /// Dò danh sách thiết bị camera bằng DirectShow COM enumeration theo đúng thứ tự phần cứng nguyên bản (KHÔNG sắp xếp bảng chữ cái).
+        /// Thứ tự này đảm bảo khớp 1:1 chính xác tuyệt đối với index của OpenCV cv::VideoCapture(i, CAP_DSHOW).
+        /// Hoàn toàn không mở luồng capture phần cứng nên không làm đứt kết nối camera đang hoạt động.
+        /// </summary>
+        public static List<CameraDeviceInfo> GetAvailableCameraDevices()
+        {
+            var result = new List<CameraDeviceInfo>();
+            try
+            {
+                Guid videoInputCat = new Guid("860BB310-5D01-11D0-BD3B-00A0C911CE86"); // CLSID_VideoInputDeviceCategory
+                Guid systemDevEnumGuid = new Guid("62BE5D10-60EB-11D0-BD3B-00A0C911CE86"); // CLSID_SystemDeviceEnum
+
+                Type srvType = Type.GetTypeFromCLSID(systemDevEnumGuid);
+                if (srvType == null) return result;
+
+                object devEnumObj = Activator.CreateInstance(srvType);
+                if (devEnumObj is not ICreateDevEnum devEnum) return result;
+
+                int hr = devEnum.CreateClassEnumerator(ref videoInputCat, out System.Runtime.InteropServices.ComTypes.IEnumMoniker enumMon, 0);
+                if (hr != 0 || enumMon == null) return result;
+
+                var monikers = new System.Runtime.InteropServices.ComTypes.IMoniker[1];
+                int deviceIndex = 0;
+
+                while (enumMon.Next(1, monikers, IntPtr.Zero) == 0)
+                {
+                    var mon = monikers[0];
+                    if (mon != null)
+                    {
+                        string friendlyName = $"Camera {deviceIndex}";
+                        string monikerString = string.Empty;
+
+                        try
+                        {
+                            mon.GetDisplayName(null, null, out monikerString);
+                        }
+                        catch { }
+
+                        try
+                        {
+                            Guid bagGuid = typeof(IPropertyBag).GUID;
+                            mon.BindToStorage(null, null, ref bagGuid, out object bagObj);
+                            if (bagObj is IPropertyBag propBag)
+                            {
+                                object val = null;
+                                int readHr = propBag.Read("FriendlyName", ref val, IntPtr.Zero);
+                                if (readHr == 0 && val is string s && !string.IsNullOrWhiteSpace(s))
+                                {
+                                    friendlyName = s;
+                                }
+                                Marshal.ReleaseComObject(propBag);
+                            }
+                        }
+                        catch { }
+
+                        result.Add(new CameraDeviceInfo
+                        {
+                            Index = deviceIndex,
+                            Name = friendlyName,
+                            MonikerString = monikerString
+                        });
+
+                        Marshal.ReleaseComObject(mon);
+                        deviceIndex++;
+                    }
+                }
+
+                Marshal.ReleaseComObject(enumMon);
+                Marshal.ReleaseComObject(devEnum);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[CameraManager] DirectShow raw COM scan error: {ex.Message}");
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Dò các index camera dùng được.
+        /// Sử dụng DirectShow enumeration để không ngắt kết nối hay chiếm dụng camera đang hoạt động.
         /// </summary>
         public static List<int> GetAvailableCameras(int maxIndex = 10)
         {
-            var list = new List<int>();
+            var devices = GetAvailableCameraDevices();
+            if (devices.Count > 0)
+            {
+                return devices.Select(d => d.Index).ToList();
+            }
 
-            for (int i = 0; i < maxIndex; i++)
+            // Fallback phòng trường hợp DirectShow COM không sẵn sàng
+            var list = new List<int>();
+            for (int i = 0; i < Math.Min(maxIndex, 3); i++)
             {
                 try
                 {
@@ -321,7 +433,6 @@ namespace DashBoardBearing
             if (ipOrUrl.Contains("://"))
                 return ipOrUrl;
 
-            // "192.168.1.5" hoặc "192.168.1.5:4747" -> thêm giao thức + đường dẫn.
             string hostPort = ipOrUrl.Contains(":") ? ipOrUrl : ipOrUrl + ":" + port;
             return "http://" + hostPort + "/video";
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C-SHARP\\DashBoardBearing\\DashBoardBearing.csproj": {}
+    "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\DashBoardBearing\\DashBoardBearing.csproj": {}
   },
   "projects": {
-    "D:\\C-SHARP\\DashBoardBearing\\DashBoardBearing.csproj": {
+    "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\DashBoardBearing\\DashBoardBearing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C-SHARP\\DashBoardBearing\\DashBoardBearing.csproj",
+        "projectUniqueName": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\DashBoardBearing\\DashBoardBearing.csproj",
         "projectName": "DashBoardBearing",
-        "projectPath": "D:\\C-SHARP\\DashBoardBearing\\DashBoardBearing.csproj",
+        "projectPath": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\DashBoardBearing\\DashBoardBearing.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\C-SHARP\\DashBoardBearing\\obj\\",
+        "outputPath": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\DashBoardBearing\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -29,11 +29,12 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows7.0": {
+          "net8.0-windows": {
+            "framework": "net8.0-windows7.0",
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "D:\\C-SHARP\\RobotView\\RobotView.csproj": {
-                "projectPath": "D:\\C-SHARP\\RobotView\\RobotView.csproj"
+              "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\RobotView\\RobotView.csproj": {
+                "projectPath": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\RobotView\\RobotView.csproj"
               }
             }
           }
@@ -48,10 +49,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
-        "net8.0-windows7.0": {
+        "net8.0-windows": {
+          "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "dependencies": {
             "AForge.Video": {
@@ -126,18 +128,18 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\C-SHARP\\RobotView\\RobotView.csproj": {
+    "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\RobotView\\RobotView.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C-SHARP\\RobotView\\RobotView.csproj",
+        "projectUniqueName": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\RobotView\\RobotView.csproj",
         "projectName": "RobotView",
-        "projectPath": "D:\\C-SHARP\\RobotView\\RobotView.csproj",
+        "projectPath": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\RobotView\\RobotView.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\C-SHARP\\RobotView\\obj\\",
+        "outputPath": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\RobotView\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -155,7 +157,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows7.0": {
+          "net8.0-windows": {
+            "framework": "net8.0-windows7.0",
             "targetAlias": "net8.0-windows",
             "projectReferences": {}
           }
@@ -170,10 +173,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
-        "net8.0-windows7.0": {
+        "net8.0-windows": {
+          "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "dependencies": {
             "Assimp": {
@@ -216,7 +220,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

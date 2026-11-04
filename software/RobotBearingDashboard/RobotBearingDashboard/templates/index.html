@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bearing AI | Dashboard</title>
+
+    <link rel="stylesheet"
+          href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- THANH MENU -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <span class="brand-icon">◈</span>
+
+            <span>
+                BEARING<span class="accent">AI</span>
+                <small>RESEARCH PLATFORM</small>
+            </span>
+        </div>
+
+        <div class="nav active">
+            ▦ &nbsp; Tổng quan
+        </div>
+
+        <div class="nav">
+            ◉ &nbsp; Giám sát AI
+        </div>
+
+        <div class="nav">
+            ▤ &nbsp; Lịch sử phân loại
+        </div>
+
+        <div class="sidebar-bottom">
+            ĐỀ TÀI NGHIÊN CỨU KHOA HỌC
+            <br>
+
+            <b>Hệ thống phân loại vòng bi</b>
+
+            <p>Flask • Python • ESP32</p>
+        </div>
+
+    </aside>
+
+
+    <!-- NỘI DUNG CHÍNH -->
+    <main>
+
+        <header>
+
+            <div>
+                <div class="eyebrow">
+                    HỆ THỐNG GIÁM SÁT THÔNG MINH
+                </div>
+
+                <h1>
+                    Trung tâm điều khiển
+                    <span class="accent">AI</span>
+                </h1>
+
+                <p class="sub">
+                    Theo dõi quá trình nhận diện và
+                    phân loại vòng bi theo thời gian thực
+                </p>
+            </div>
+
+            <div class="clock" id="clock"></div>
+
+        </header>
+
+
+        <!-- TRẠNG THÁI THIẾT BỊ -->
+        <section class="statusbar">
+
+            <span>
+                <i id="dot-ai"></i>
+                AI:
+                <b id="ai-status">Chưa kết nối</b>
+            </span>
+
+            <span>
+                <i id="dot-cam"></i>
+                Camera:
+                <b id="cam-status">Chưa kết nối</b>
+            </span>
+
+            <span>
+                <i id="dot-esp"></i>
+                ESP32:
+                <b id="esp-status">Chưa kết nối</b>
+            </span>
+
+            <span class="mode" id="mode-pill">
+                KẾT NỐI THỰC TẾ
+            </span>
+
+        </section>
+
+
+        <!-- THỐNG KÊ TỔNG QUAN -->
+        <section class="stats">
+
+            <article class="stat">
+                <div class="stat-label">
+                    TỔNG SẢN PHẨM
+                    <span>▣</span>
+                </div>
+
+                <strong id="total">0</strong>
+                <p>Đã nhận diện</p>
+            </article>
+
+            <article class="stat">
+                <div class="stat-label">
+                    ĐẠT CHUẨN
+                    <span>✓</span>
+                </div>
+
+                <strong class="green" id="ok">0</strong>
+                <p>Sản phẩm OK</p>
+            </article>
+
+            <article class="stat">
+                <div class="stat-label">
+                    KHÔNG ĐẠT
+                    <span>!</span>
+                </div>
+
+                <strong class="red" id="ng">0</strong>
+                <p>Sản phẩm lỗi</p>
+            </article>
+
+            <article class="stat">
+                <div class="stat-label">
+                    TỶ LỆ ĐẠT
+                    <span>◴</span>
+                </div>
+
+                <strong class="cyan" id="rate">0%</strong>
+                <p>Tỷ lệ nhận diện đạt chuẩn</p>
+            </article>
+
+        </section>
+
+
+        <!-- CAMERA VÀ ĐIỀU KHIỂN -->
+        <section class="columns">
+
+            <!-- CAMERA -->
+            <article class="panel camera">
+
+                <div class="panel-head">
+
+                    <div>
+                        <h2>
+                            ◉ &nbsp; Giám sát nhận diện
+                        </h2>
+
+                        <p>
+                            Hình ảnh từ hệ thống camera AI
+                        </p>
+                    </div>
+
+                    <span class="tag" id="camera-tag">
+                        CHƯA KẾT NỐI
+                    </span>
+
+                </div>
+
+                <div class="camera-screen">
+
+                    <img
+                        id="camera-img"
+                        alt="Hình ảnh camera thực tế"
+                        hidden
+                    >
+
+                    <div id="camera-placeholder">
+
+                        <div class="camera-icon">◎</div>
+
+                        <b>Camera chưa được kết nối</b>
+
+                        <p>
+                            Chờ kết nối nguồn ảnh
+                            từ chương trình AI Python
+                        </p>
+
+                    </div>
+
+                    <div class="screen-corner tl"></div>
+                    <div class="screen-corner tr"></div>
+                    <div class="screen-corner bl"></div>
+                    <div class="screen-corner br"></div>
+
+                </div>
+
+                <div class="last-result">
+
+                    <span>KẾT QUẢ GẦN NHẤT</span>
+
+                    <b id="last-result">
+                        Chưa có dữ liệu
+                    </b>
+
+                    <small id="last-confidence">
+                        —
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- ĐIỀU KHIỂN -->
+            <article class="panel controls">
+
+                <div class="panel-head">
+
+                    <div>
+                        <h2>
+                            ⚙ &nbsp; Điều khiển hệ thống
+                        </h2>
+
+                        <p>
+                            Điều khiển và giám sát
+                            hệ thống thực tế
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- TRẠNG THÁI -->
+                <label class="field-label">
+                    TRẠNG THÁI VẬN HÀNH
+                </label>
+
+                <div class="runstate">
+
+                    <i id="run-dot"></i>
+
+                    <div>
+                        <b id="run-label">
+                            Đang dừng
+                        </b>
+
+                        <small id="run-sub">
+                            Nhấn Bắt đầu để vận hành
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <!-- NÚT ĐIỀU KHIỂN -->
+                <div class="buttons">
+
+                    <button
+                        class="start"
+                        onclick="control('start')"
+                    >
+                        ▶ &nbsp; Bắt đầu
+                    </button>
+
+                    <button
+                        class="stop"
+                        onclick="control('stop')"
+                    >
+                        ■ &nbsp; Dừng
+                    </button>
+
+                </div>
+
+
+                <!-- RESET -->
+                <button
+                    class="reset"
+                    onclick="resetCounter()"
+                >
+                    ↺ &nbsp; Đặt lại thống kê
+                </button>
+
+
+                <!-- THÔNG BÁO -->
+                <div class="notice">
+                    Website tiếp nhận kết quả nhận diện
+                    từ chương trình AI Python thông qua
+                    API <code>/api/detection</code>
+                    và gửi lệnh phân loại đến ESP32.
+                    Trạng thái robot cần được xác nhận
+                    từ thiết bị thực tế.
+                </div>
+
+                <p class="feedback" id="feedback"></p>
+
+            </article>
+
+        </section>
+
+
+        <!-- THỐNG KÊ VÀ LỊCH SỬ -->
+        <section class="columns bottom">
+
+            <!-- BIỂU ĐỒ THỐNG KÊ -->
+            <article class="panel">
+
+                <div class="panel-head">
+
+                    <div>
+                        <h2>
+                            ▥ &nbsp; Thống kê phân loại
+                        </h2>
+
+                        <p>
+                            Phân bố kết quả nhận diện
+                            theo từng nhóm
+                        </p>
+                    </div>
+
+                </div>
+
+                <div id="bars" class="bars"></div>
+
+            </article>
+
+
+            <!-- LỊCH SỬ PHÂN LOẠI -->
+            <article class="panel">
+
+                <div class="panel-head">
+
+                    <div>
+                        <h2>
+                            ◷ &nbsp; Lịch sử gần đây
+                        </h2>
+
+                        <p>
+                            60 kết quả nhận diện mới nhất
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="tablewrap">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>THỜI GIAN</th>
+                                <th>PHÂN LOẠI</th>
+                                <th>ĐỘ TIN CẬY</th>
+                                <th>NGUỒN</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="history">
+
+                            <tr>
+                                <td colspan="4">
+                                    Chưa có dữ liệu
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+            BEARING AI DASHBOARD • NCKH
+            • HỆ THỐNG PHÂN LOẠI VÒNG BI
+        </footer>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="/static/app.js"></script>
+
+</body>
+</html>

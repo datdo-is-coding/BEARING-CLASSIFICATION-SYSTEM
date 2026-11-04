@@ -1,5 +1,6 @@
 #include "control.hpp"
 #include "kinematics.hpp"
+#include "config_storage.hpp"
 
 // =====================================================
 // PCA9685
@@ -134,9 +135,9 @@ void initServo()
 
 void moveToStartPos()
 {
-    int32_t x = 164;
-    int32_t y = 0;
-    int32_t z = 104;
+    int32_t x = (currentConfig.startPoint.x != 0 || currentConfig.startPoint.y != 0 || currentConfig.startPoint.z != 0) ? currentConfig.startPoint.x : 164;
+    int32_t y = (currentConfig.startPoint.x != 0 || currentConfig.startPoint.y != 0 || currentConfig.startPoint.z != 0) ? currentConfig.startPoint.y : 0;
+    int32_t z = (currentConfig.startPoint.x != 0 || currentConfig.startPoint.y != 0 || currentConfig.startPoint.z != 0) ? currentConfig.startPoint.z : 104;
 
     // Tính IK
     if (!IK(x, y, z))

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
@@ -12,19 +12,68 @@ namespace DashBoardBearing
         private readonly SerialManager _serial;
 
         // Map: vị trí trong cbWebcam -> index camera thật của OpenCV
+        private readonly List<CameraDeviceInfo> _cameraDevices = new List<CameraDeviceInfo>();
         private readonly List<int> _cameraIndices = new List<int>();
 
         public FormSetting(CameraManager cam, SerialManager serial)
         {
             InitializeComponent();
 
-            splitContainer1.SplitterDistance =
-                splitContainer1.ClientSize.Width / 2;
-
             _cam = cam;
             _serial = serial;
 
-            _cam.FrameReady += Camera_FrameReady;
+            if (_cam != null)
+            {
+                _cam.FrameReady += Camera_FrameReady;
+            }
+
+            UITheme.ThemeChanged += ApplyTheme;
+        }
+
+        private void ApplyTheme()
+        {
+            BackColor = UITheme.BgDark;
+
+            cardCamera.BackgroundColor = UITheme.BgCard;
+            cardCamera.BorderColor = UITheme.BorderCard;
+
+            cardSerial.BackgroundColor = UITheme.BgCard;
+            cardSerial.BorderColor = UITheme.BorderCard;
+
+            lblCamHeaderTitle.ForeColor = UITheme.TextPrimary;
+            lblSerialHeaderTitle.ForeColor = UITheme.TextPrimary;
+
+            lblWebcamTitle.ForeColor = UITheme.TextSecondary;
+            lblIpTitle.ForeColor = UITheme.TextSecondary;
+            lblPreviewTitle.ForeColor = UITheme.TextSecondary;
+
+            lblComTitle.ForeColor = UITheme.TextSecondary;
+            lblBaud.ForeColor = UITheme.TextSecondary;
+            lblDataSize.ForeColor = UITheme.TextSecondary;
+            lblParity.ForeColor = UITheme.TextSecondary;
+            lblStopBit.ForeColor = UITheme.TextSecondary;
+
+            ComboBox[] combos = { cbWebcam, cbCOM, cbBaud, cbDataSize, cbParityBit, cbStopBit };
+            foreach (var cb in combos)
+            {
+                cb.BackColor = UITheme.BgInput;
+                cb.ForeColor = UITheme.TextPrimary;
+            }
+
+            txtIP.BackColor = UITheme.BgInput;
+            txtIP.ForeColor = UITheme.TextPrimary;
+
+            picWebcam.BackColor = UITheme.BgViewport;
+
+            btnRefreshCam.BackColor = UITheme.BgCardAlt;
+            btnRefreshCam.ForeColor = UITheme.TextSecondary;
+            btnRefreshCam.IconColor = UITheme.TextSecondary;
+            btnRefreshCam.FlatAppearance.BorderColor = UITheme.BorderCard;
+
+            btnRefreshPorts.BackColor = UITheme.BgCardAlt;
+            btnRefreshPorts.ForeColor = UITheme.TextSecondary;
+            btnRefreshPorts.IconColor = UITheme.TextSecondary;
+            btnRefreshPorts.FlatAppearance.BorderColor = UITheme.BorderCard;
         }
 
         // =========================================================
@@ -33,44 +82,58 @@ namespace DashBoardBearing
 
         public void LoadWebcam()
         {
-            
             cbWebcam.Items.Clear();
             _cameraIndices.Clear();
+            _cameraDevices.Clear();
 
             Cursor = Cursors.WaitCursor;
             try
             {
-                _cameraIndices.AddRange(CameraManager.GetAvailableCameras());
+                var devices = CameraManager.GetAvailableCameraDevices();
+                _cameraDevices.AddRange(devices);
+                foreach (var d in devices)
+                {
+                    _cameraIndices.Add(d.Index);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi quét camera: {ex.Message}", "Camera", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 Cursor = Cursors.Default;
             }
 
-            // Camera đang chạy bị CameraManager chiếm nên dò không thấy
-            // -> tự thêm lại để người dùng thấy đúng camera hiện tại.
-            if (_cam.IsRunning &&
-                !_cameraIndices.Contains(_cam.CurrentCameraIndex))
+            if (_cameraDevices.Count == 0)
             {
-                _cameraIndices.Add(_cam.CurrentCameraIndex);
-                _cameraIndices.Sort();
+                cbWebcam.Items.Add("Không tìm thấy thiết bị");
+                cbWebcam.SelectedIndex = 0;
+                return;
             }
 
-            if (_cameraIndices.Count == 0)
-                return;
+            foreach (var dev in _cameraDevices)
+            {
+                cbWebcam.Items.Add($"{dev.Name} (Index {dev.Index})");
+            }
 
-            foreach (int idx in _cameraIndices)
-                cbWebcam.Items.Add("Camera " + idx);
-
-            int selected = _cam.IsRunning
-                ? _cameraIndices.IndexOf(_cam.CurrentCameraIndex)
-                : -1;
+            // Tự động chọn camera đang hoạt động (nếu có)
+            int selected = -1;
+            if (_cam != null && _cam.IsRunning)
+            {
+                for (int i = 0; i < _cameraDevices.Count; i++)
+                {
+                    if (_cameraDevices[i].Index == _cam.CurrentCameraIndex)
+                    {
+                        selected = i;
+                        break;
+                    }
+                }
+            }
 
             cbWebcam.SelectedIndex = selected >= 0 ? selected : 0;
         }
 
-        // Event do CameraManager raise trên UI thread
-        // -> gán thẳng vào PictureBox, không cần BeginInvoke.
         private void Camera_FrameReady(object sender, FrameReadyEventArgs e)
         {
             if (IsDisposed || Disposing || picWebcam.IsDisposed)
@@ -86,10 +149,10 @@ namespace DashBoardBearing
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            if (cbWebcam.SelectedIndex < 0)
+            if (cbWebcam.SelectedIndex < 0 || _cameraIndices.Count == 0)
             {
                 MessageBox.Show(
-                    "Vui lòng chọn Camera.",
+                    "Vui lòng chọn Camera từ danh sách.",
                     "Camera",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -102,28 +165,70 @@ namespace DashBoardBearing
             if (!_cam.Start(camIndex))
             {
                 MessageBox.Show(
-                    "Không thể kết nối Camera.",
+                    "Không thể kết nối Camera được chọn.",
                     "Camera",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Mở Camera thành công!",
+                    "Camera",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
 
         private async void btnDisconnect_Click(object sender, EventArgs e)
         {
-            // StopAsync đợi frame đang inference xong rồi mới release camera.
-            await _cam.StopAsync();
-
-            if (picWebcam.Image != null)
+            if (_cam != null)
             {
-                Image old = picWebcam.Image;
-                picWebcam.Image = null;
-                old.Dispose();
+                await _cam.StopAsync();
+
+                if (picWebcam.Image != null)
+                {
+                    Image old = picWebcam.Image;
+                    picWebcam.Image = null;
+                    old.Dispose();
+                }
+            }
+        }
+
+        private void btnRefreshCam_Click(object sender, EventArgs e)
+        {
+            LoadWebcam();
+        }
+
+        private async void btnConnectIP_Click(object sender, EventArgs e)
+        {
+            string url = txtIP.Text.Trim();
+            if (string.IsNullOrEmpty(url))
+            {
+                MessageBox.Show("Vui lòng nhập địa chỉ RTSP / HTTP của camera.", "Camera IP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                if (!await _cam.StartIpAsync(url))
+                {
+                    MessageBox.Show("Không thể kết nối camera IP.", "Camera",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Kết nối Camera IP thành công!", "Camera", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Camera IP", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         // =========================================================
-        // SERIAL (giữ nguyên)
+        // SERIAL
         // =========================================================
 
         private void LoadCOM()
@@ -133,7 +238,11 @@ namespace DashBoardBearing
             string[] ports = _serial.GetPorts();
 
             if (ports.Length == 0)
+            {
+                cbCOM.Items.Add("Không có cổng COM");
+                cbCOM.SelectedIndex = 0;
                 return;
+            }
 
             cbCOM.Items.AddRange(ports);
 
@@ -148,6 +257,11 @@ namespace DashBoardBearing
             {
                 cbCOM.SelectedIndex = 0;
             }
+        }
+
+        private void btnRefreshPorts_Click(object sender, EventArgs e)
+        {
+            LoadCOM();
         }
 
         private void LoadBaud()
@@ -261,15 +375,10 @@ namespace DashBoardBearing
 
         private void FormSetting_Load(object sender, EventArgs e)
         {
-            // Camera
-            if(!_cam.IsRunning)
-            {
-                LoadWebcam();
-            }
-            else
-            {
+            ApplyTheme();
 
-            }
+            // Camera
+            LoadWebcam();
 
             // Serial
             LoadCOM();
@@ -282,13 +391,14 @@ namespace DashBoardBearing
         private void btnConnectSerial_Click(object sender, EventArgs e)
         {
             if (cbCOM.SelectedIndex < 0 ||
+                cbCOM.SelectedItem.ToString().Contains("Không") ||
                 cbBaud.SelectedIndex < 0 ||
                 cbDataSize.SelectedIndex < 0 ||
                 cbParityBit.SelectedIndex < 0 ||
                 cbStopBit.SelectedIndex < 0)
             {
                 MessageBox.Show(
-                    "Vui lòng chọn đầy đủ thông số Serial.",
+                    "Vui lòng chọn đầy đủ thông số Serial hợp lệ.",
                     "Serial",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -333,7 +443,7 @@ namespace DashBoardBearing
             {
                 MessageBox.Show(
                     "Không thể kết nối Serial.\n\n" +
-                    "Kiểm tra lại COM hoặc thông số Serial.",
+                    "Kiểm tra lại COM hoặc quyền truy cập cổng.",
                     "Serial",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -342,7 +452,7 @@ namespace DashBoardBearing
             }
 
             MessageBox.Show(
-                "Kết nối Serial thành công.",
+                $"Kết nối Serial thành công qua cổng {portName} ({baudRate} bps)!",
                 "Serial",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -351,34 +461,26 @@ namespace DashBoardBearing
         private void btnDisconnectSer_Click(object sender, EventArgs e)
         {
             if (_serial != null && _serial.IsRunning)
+            {
                 _serial.Disconnect();
+                MessageBox.Show("Đã ngắt kết nối Serial.", "Serial", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void FormSetting_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _cam.FrameReady -= Camera_FrameReady;
+            UITheme.ThemeChanged -= ApplyTheme;
+
+            if (_cam != null)
+            {
+                _cam.FrameReady -= Camera_FrameReady;
+            }
 
             if (picWebcam.Image != null)
             {
                 Image old = picWebcam.Image;
                 picWebcam.Image = null;
                 old.Dispose();
-            }
-        }
-
-        private async void btnConnectIP_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!await _cam.StartIpAsync(txtIP.Text.Trim()))
-                {
-                    MessageBox.Show("Không thể kết nối camera IP.", "Camera",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
     }

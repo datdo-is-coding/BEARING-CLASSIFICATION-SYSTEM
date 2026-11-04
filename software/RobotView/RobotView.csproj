@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>   
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Assimp" Version="3.0.0" />
+    <PackageReference Include="HelixToolkit" Version="3.1.2" />
+    <PackageReference Include="HelixToolkit.SharpDX.Assimp" Version="3.1.2" />
+    <PackageReference Include="HelixToolkit.Wpf" Version="3.1.2" />
+    <PackageReference Include="HelixToolkit.Wpf.SharpDX" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Robot4DOF.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

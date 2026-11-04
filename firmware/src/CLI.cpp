@@ -1,4 +1,6 @@
 #include "CLI.hpp"
+#include "robot_system_flow.hpp"
+#include "config_storage.hpp"
 
 RobotState robotState = RUN;
 
@@ -35,12 +37,83 @@ void parseCommand(String command)
     }
     else if(command.equals("STOP")){
         robotState = STOP;
+        systemFlowStop();
         moveToStartPos();
         instructionIndex = 0;
     }
 
     else if (command.equals("RUN")){
         robotState = RUN;
+    }
+
+    // Các lệnh điều khiển mới
+    else if (command.equals("AUTO") || command.equals("FLOW_START")){
+        systemFlowStart();
+    }
+    else if (command.equals("FLOW_STOP")){
+        systemFlowStop();
+    }
+    else if (command.startsWith("CONV")){
+        int speed = command.substring(4).toInt();
+        if (speed > 0) startConveyor((uint8_t)speed);
+        else stopConveyor();
+    }
+    else if (command.startsWith("MAG")){
+        int val = command.substring(3).toInt();
+        setMagnet(val > 0);
+    }
+    else if (command.startsWith("CB")){
+        int num = command.substring(2).toInt();
+        if (num == 2) setActiveSensor(CB2);
+        else setActiveSensor(CB1);
+    }
+    else if (command.equals("SENSOR")){
+        Serial.printf("[SENSOR STATUS] CB1(IO%d): %d | CB2(IO%d): %d | Active: CB%d | Object: %s\n",
+                      CB1, readSensorRaw(CB1),
+                      CB2, readSensorRaw(CB2),
+                      (getActiveSensor() == CB1) ? 1 : 2,
+                      isObjectDetected(getActiveSensor()) ? "YES" : "NO");
+    }
+
+    // Các lệnh cài đặt & lưu cấu hình vào Flash (Preferences)
+    else if (command.startsWith("SETPICK")){
+        int x, y, z;
+        if (sscanf(command.c_str(), "SETPICK %d %d %d", &x, &y, &z) == 3){
+            savePickCoordinate(x, y, z);
+        } else {
+            Serial.println("Cu phap: SETPICK <x> <y> <z>");
+        }
+    }
+    else if (command.startsWith("SETPLACE")){
+        int idx, x, y, z;
+        if (sscanf(command.c_str(), "SETPLACE %d %d %d %d", &idx, &x, &y, &z) == 4){
+            if (idx >= 1 && idx <= 3){
+                savePlaceCoordinate((uint8_t)idx, x, y, z);
+            } else {
+                Serial.println("Index chi tu 1 den 3 (1: OK, 2: NG1, 3: NG2)");
+            }
+        } else {
+            Serial.println("Cu phap: SETPLACE <1..3> <x> <y> <z>");
+        }
+    }
+    else if (command.startsWith("SETSPEED")){
+        int spd = command.substring(8).toInt();
+        if (spd >= 0 && spd <= 255){
+            saveConveyorSpeed((uint8_t)spd);
+        } else {
+            Serial.println("Toc do PWM tu 0 den 255");
+        }
+    }
+    else if (command.startsWith("SETCB")){
+        int num = command.substring(5).toInt();
+        if (num == 2) saveActiveSensor(CB2);
+        else saveActiveSensor(CB1);
+    }
+    else if (command.equals("GETCFG") || command.equals("SHOWCFG")){
+        printConfigStorage();
+    }
+    else if (command.equals("RESETCFG")){
+        resetDefaultConfig();
     }
 }
 

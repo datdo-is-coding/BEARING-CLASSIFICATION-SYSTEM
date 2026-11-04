@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
-    "net8.0-windows7.0": {
+    "net8.0-windows": {
       "AForge/2.2.5": {
         "type": "package",
         "compile": {
@@ -8870,7 +8870,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": [
+    "net8.0-windows": [
       "AForge.Video >= 2.2.5",
       "AForge.Video.DirectShow >= 2.2.5",
       "Assimp >= 3.0.0",
@@ -8894,11 +8894,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C-SHARP\\DashBoardBearing\\DashBoardBearing.csproj",
+      "projectUniqueName": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\DashBoardBearing\\DashBoardBearing.csproj",
       "projectName": "DashBoardBearing",
-      "projectPath": "D:\\C-SHARP\\DashBoardBearing\\DashBoardBearing.csproj",
+      "projectPath": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\DashBoardBearing\\DashBoardBearing.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\C-SHARP\\DashBoardBearing\\obj\\",
+      "outputPath": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\DashBoardBearing\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8916,11 +8916,12 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net8.0-windows7.0": {
+        "net8.0-windows": {
+          "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "D:\\C-SHARP\\RobotView\\RobotView.csproj": {
-              "projectPath": "D:\\C-SHARP\\RobotView\\RobotView.csproj"
+            "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\RobotView\\RobotView.csproj": {
+              "projectPath": "D:\\Bearing-Classification\\BEARING-CLASSIFICATION-SYSTEM\\software\\RobotView\\RobotView.csproj"
             }
           }
         }
@@ -8935,10 +8936,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
-      "net8.0-windows7.0": {
+      "net8.0-windows": {
+        "framework": "net8.0-windows7.0",
         "targetAlias": "net8.0-windows",
         "dependencies": {
           "AForge.Video": {
@@ -9013,7 +9015,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -9025,7 +9027,7 @@
       "message": "Package 'AForge 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "AForge",
       "targetGraphs": [
-        "net8.0-windows7.0"
+        "net8.0-windows"
       ]
     },
     {
@@ -9035,7 +9037,7 @@
       "message": "Package 'AForge.Video 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "AForge.Video",
       "targetGraphs": [
-        "net8.0-windows7.0"
+        "net8.0-windows"
       ]
     },
     {
@@ -9045,7 +9047,7 @@
       "message": "Package 'AForge.Video.DirectShow 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "AForge.Video.DirectShow",
       "targetGraphs": [
-        "net8.0-windows7.0"
+        "net8.0-windows"
       ]
     }
   ]
